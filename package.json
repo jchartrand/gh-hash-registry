@@ -1,7 +1,7 @@
 {
   "name": "@jchartrand/gh-hash-registry",
-  "version": "0.4.0",
-  "developmentVersion": "0.3.0",
+  "version": "0.0.0",
+  "developmentVersion": "0.4.0",
   "type": "module",
   "description": "Publish hashes (of credentials) to a GitHub repository for verification and audit.",
   "main": "./dist/index.js",
