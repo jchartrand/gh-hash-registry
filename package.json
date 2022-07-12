@@ -1,0 +1,38 @@
+{
+  "name": "@jchartrand/gh-hash-registry",
+  "version": "0.0.0",
+  "developmentVersion": "0.1.0",
+  "type": "module",
+  "description": "Publish hashes (of credentials) to a GitHub repository for verification and audit.",
+  "main": "./dist/index.js",
+  "scripts": {
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "test:watch": "node --experimental-vm-modules node_modules/jest/bin/jest.js --watch",
+    "build": "./node_modules/.bin/esbuild ./src/index.js --format=esm --bundle --outfile=./dist/index.js --platform=node --target=node16.3 --minify",
+    "release:development": "export NODE_ENV=development && npm run build && node ./release.js",
+    "release:production": "export NODE_ENV=production && npm run build && node ./release.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jchartrand/gh-hash-registry.git"
+  },
+  "author": "James Chartrand",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jchartrand/gh-hash-registry/issues"
+  },
+  "homepage": "https://github.com/jchartrand/gh-hash-registry#readme",
+  "devDependencies": {
+    "esbuild": "^0.14.49",
+    "jest": "^28.1.2",
+    "jest-cli": "^28.1.2",
+    "semver": "^7.3.7"
+  },
+  "dependencies": {
+    "@octokit/core": "^3.6.0",
+    "@octokit/rest": "^18.12.0",
+    "axios": "^0.27.2",
+    "buffer": "^6.0.3",
+    "dotenv": "^16.0.1"
+  }
+}
