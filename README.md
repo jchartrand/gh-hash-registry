@@ -22,4 +22,7 @@ To run it:
 
 verdaccio
 
-This works in conjunction with the release script in [release.js](./release.js) which is invoked from the release scripts (release.development and release.production) defined in [package.json](./package.json)
+Once running  - at [http://localhost:4873](http://localhost:4873) - you'll have to login to it with your npm account, as described by the Verdaccio welcome screen at that url.
+
+Verdaccio is used by the release script in [release.js](./release.js), which is in turn invoked from the release scripts (release.development and release.production) defined in [package.json](./package.json)
+
