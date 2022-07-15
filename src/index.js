@@ -1,7 +1,4 @@
-//import {Octokit} from '@octokit/rest'
 const { Octokit } = require("@octokit/rest");
-
-//import crypto from 'crypto'
 const crypto = require('crypto');
 
 async function getHashesFromGithub(github, owner, repo, path) {
