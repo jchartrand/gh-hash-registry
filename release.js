@@ -1,4 +1,4 @@
-const execSync = require("child_process");
+const {execSync} = require("child_process");
 const semver = require('semver')
 const fs = require('fs')
 //import semver from "semver";
@@ -34,6 +34,7 @@ try {
     `npm version ${version} --allow-same-version ${registry} && npm publish --access public ${force} ${registry}`
   );
 } catch (exception) {
+    console.log(exception)
   setPackageJSONVersions(originalVersion, version);
 }
 
