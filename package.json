@@ -1,19 +1,16 @@
 {
   "name": "@jchartrand/gh-hash-registry",
-  "version": "0.9.0",
-  "developmentVersion": "0.8.0",
-  "type": "module",
+  "version": "0.0.0",
+  "developmentVersion": "0.9.0",
   "description": "Publish hashes (of credentials) to a GitHub repository for verification and audit.",
-  "main": "./dist/index.js",
-  "files": [
-    "dist"
-  ],
+  "main": "./src/index.js",
   "scripts": {
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "test:watch": "node --experimental-vm-modules node_modules/jest/bin/jest.js --watch",
     "build": "./node_modules/.bin/esbuild ./src/index.js --format=esm --bundle --outfile=./dist/index.js --platform=node --target=node16.3 --minify",
     "release:development": "export NODE_ENV=development && npm run build && node ./release.js",
-    "release:production": "export NODE_ENV=production && npm run build && node ./release.js"
+    "release:production": "export NODE_ENV=production && npm run build && node ./release.js",
+    "release:dev:common": "export NODE_ENV=development && node ./release.js"
   },
   "repository": {
     "type": "git",
