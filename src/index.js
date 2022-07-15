@@ -1,5 +1,8 @@
-import {Octokit} from '@octokit/rest'
-import crypto from 'crypto'
+//import {Octokit} from '@octokit/rest'
+const { Octokit } = require("@octokit/rest");
+
+//import crypto from 'crypto'
+const crypto = require('crypto');
 
 async function getHashesFromGithub(github, owner, repo, path) {
     let doesFileExist = true
@@ -44,7 +47,7 @@ function getHash(data) {
         .digest('base64');
 }
 
-export default function CredRegistry(owner, repo, authToken) {
+module.exports = function CredRegistry(owner, repo, authToken) {
 
     const github = new Octokit({ auth: authToken })
     const path = '1.csv'

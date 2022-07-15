@@ -5,8 +5,8 @@
   "description": "Publish hashes (of credentials) to a GitHub repository for verification and audit.",
   "main": "./src/index.js",
   "scripts": {
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
-    "test:watch": "node --experimental-vm-modules node_modules/jest/bin/jest.js --watch",
+    "test": "jest",
+    "test:watch": "jest --watch",
     "build": "./node_modules/.bin/esbuild ./src/index.js --format=esm --bundle --outfile=./dist/index.js --platform=node --target=node16.3 --minify",
     "release:development": "export NODE_ENV=development && npm run build && node ./release.js",
     "release:production": "export NODE_ENV=production && npm run build && node ./release.js",

@@ -1,6 +1,8 @@
-import { execSync } from "child_process";
-import semver from "semver";
-import fs from 'fs';
+const execSync = require("child_process");
+const semver = require('semver')
+const fs = require('fs')
+//import semver from "semver";
+//import fs from 'fs';
 
 const getPackageJSON = () => {
   const packageJSON = fs.readFileSync('./package.json', 'utf-8');

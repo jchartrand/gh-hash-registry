@@ -1,5 +1,6 @@
-import CredRegistry from '.'
-import 'dotenv/config'  // adds env variables from the .env file to the node 'process' object
+const CredRegistry = require('./index.js')
+//import 'dotenv/config'  // adds env variables from the .env file to the node 'process' object
+require('dotenv').config()
 
 const credReg = CredRegistry(process.env.GITHUB_OWNER, process.env.GITHUB_REPO, process.env.GITHUB_TOKEN)
 
