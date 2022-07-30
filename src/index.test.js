@@ -5,6 +5,10 @@ require('dotenv').config()
 const credReg = CredRegistry(process.env.GITHUB_OWNER, process.env.GITHUB_REPO, process.env.GITHUB_TOKEN)
 
 describe('index.js', () => {
+    test.skip('debugging', async ()=> {
+      await credReg.addToRegistry('lkjdlks');
+      expect(true)
+    })
     test('adds hash to the registry', async () => {
       await credReg.addToRegistry('lkjdlks');
       const result = await credReg.isInRegistry('lkjdlks');

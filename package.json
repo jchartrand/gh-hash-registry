@@ -1,7 +1,7 @@
 {
   "name": "@jchartrand/gh-hash-registry",
-  "version": "0.14.0",
-  "developmentVersion": "0.13.0",
+  "version": "0.0.0",
+  "developmentVersion": "0.15.0",
   "description": "Publish hashes (of credentials) to a GitHub repository for verification and audit.",
   "main": "./src/index.js",
   "scripts": {
@@ -33,6 +33,8 @@
     "@octokit/rest": "^18.12.0",
     "axios": "^0.27.2",
     "buffer": "^6.0.3",
-    "dotenv": "^16.0.1"
+    "dotenv": "^16.0.1",
+    "isomorphic-webcrypto": "^2.3.8",
+    "universal-base64": "^2.1.0"
   }
 }
