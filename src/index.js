@@ -2,6 +2,8 @@ const { Octokit } = require("@octokit/rest");
 //const crypto = require('crypto');
 const isoCrypto = require('isomorphic-webcrypto')
 const {encode, decode} = require('universal-base64')
+const canonicalize = require('canonicalize');
+
 
 async function getHashesFromGithub(github, owner, repo, path) {
     let doesFileExist = true
@@ -43,8 +45,9 @@ async function saveHashesToGithub(github, owner, repo, path, hashes, sha) {
 
 
 
-async function getHash(message) {
-    const msgUint8 = new TextEncoder().encode(message);                           // encode as (utf-8) Uint8Array
+async function getHash(vc) {
+    const canonized = await canonicalize(vc);
+    const msgUint8 = new TextEncoder().encode(canonized);                           // encode as (utf-8) Uint8Array
     const hashBuffer = await isoCrypto.subtle.digest('SHA-256', msgUint8);           // hash the message
     const hashArray = Array.from(new Uint8Array(hashBuffer));                     // convert buffer to byte array
     const hashHex = hashArray.map((b) => b.toString(16).padStart(2, '0')).join(''); // convert bytes to hex string
@@ -71,21 +74,21 @@ module.exports = function CredRegistry(owner, repo, authToken) {
     const path = '1.csv'
 
     return {
-        addToRegistry: async (data) => {
-            const hash = await getHash(data)
+        addToRegistry: async (vc) => {
+            const hash = await getHash(vc)
             const {sha, hashes} = await getHashesFromGithub(github, owner, repo, path);
             hashes.push(hash)
             await saveHashesToGithub(github, owner, repo, path, hashes, sha)
         },
         
-        isInRegistry: async (data) => {
-            const hash = await getHash(data)
+        isInRegistry: async (vc) => {
+            const hash = await getHash(vc)
             const {hashes} = await getHashesFromGithub(github, owner, repo, path);
             return hashes.includes(hash)
         },
         
-        removeFromRegistry: async (data) => {
-            const hash = await getHash(data)
+        removeFromRegistry: async (vc) => {
+            const hash = await getHash(vc)
             const {sha, hashes} = await getHashesFromGithub(github, owner, repo, path);
             const updatedhashes = hashes.filter(entry => entry!==hash);
             await saveHashesToGithub(github, owner, repo, path, updatedhashes, sha)
