@@ -70,7 +70,7 @@ async function getHashOLD(data) {
 
 module.exports = function CredRegistry(owner, repo, authToken) {
 
-    const github = new Octokit({ auth: authToken })
+    const github = authToken?new Octokit({ auth: authToken }):new Octokit()
     const path = '1.csv'
 
     return {

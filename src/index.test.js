@@ -48,7 +48,7 @@ DIFFERENT_SAMPLE_VC = {
 	}]
 }
 
-const credReg = CredRegistry(process.env.GITHUB_OWNER, process.env.GITHUB_REPO, process.env.GITHUB_TOKEN)
+//let credReg = CredRegistry(process.env.GITHUB_OWNER, process.env.GITHUB_REPO, process.env.GITHUB_TOKEN)
 
 describe('index.js', () => {
     test.skip('debugging', async ()=> {
@@ -77,4 +77,14 @@ describe('index.js', () => {
       const result = await credReg.isInRegistry(SAMPLE_VC);
       expect(result).toEqual(true)
     })
+
+    test.only('get reg with no auth', async ()=> {
+      credReg = CredRegistry(process.env.GITHUB_OWNER, process.env.GITHUB_REPO)
+      const result = await credReg.isInRegistry(SAMPLE_VC);
+      expect(result).toEqual(true)
+    })
+
 });
+
+
+
